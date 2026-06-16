@@ -1,0 +1,29 @@
+{
+  "name": "lost-friends",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "web",
+    "mobile"
+  ],
+  "scripts": {
+    "dev:backend": "cd backend && bun run dev",
+    "dev:web": "cd web && npm run dev",
+    "dev:mobile": "cd mobile && npm run dev",
+    "build:backend": "cd backend && bun run build",
+    "build:web": "cd web && npm run build",
+    "build:mobile": "cd mobile && npm run build",
+    "lint": "npm run lint --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspaces",
+    "db:generate": "cd backend && bun run db:generate",
+    "db:push": "cd backend && bun run db:push"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Lost Friends",
+    "slug": "lost-friends",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "lostfriends",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#D92243"
+    },
+    "icon": "./assets/icon.png",
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#D92243"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#D92243"
+        }
+      ],
+      "expo-image-picker"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

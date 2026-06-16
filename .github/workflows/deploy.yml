@@ -1,0 +1,64 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-backend:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: bun install
+
+      - name: Build backend
+        working-directory: ./backend
+        run: bun run build
+
+      - name: Deploy to Sevalla
+        uses: sevalla-hosting/sevalla-deploy@v2.0.0
+        with:
+          action: deploy-app
+          sevalla-token: ${{ secrets.SEVALLA_TOKEN }}
+          app-id: ${{ secrets.SEVALLA_BACKEND_APP_ID }}
+          branch: main
+          wait-for-finish: true
+
+  deploy-web:
+    name: Deploy Web
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: ./web
+        run: npm ci
+
+      - name: Build web
+        working-directory: ./web
+        run: npm run build
+
+      - name: Deploy to Sevalla Static Hosting
+        uses: sevalla-hosting/sevalla-deploy@v2.0.0
+        with:
+          action: deploy-static-site
+          sevalla-token: ${{ secrets.SEVALLA_TOKEN }}
+          static-site-id: ${{ secrets.SEVALLA_WEB_STATIC_SITE_ID }}
+          branch: main
+          wait-for-finish: true
