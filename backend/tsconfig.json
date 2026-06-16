@@ -14,10 +14,6 @@
     "declaration": false,
     "declarationMap": false,
     "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "types": ["node"]
   },
   "include": ["src/**/*"],
