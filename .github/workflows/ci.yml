@@ -19,18 +19,13 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
       - name: Install backend dependencies
         working-directory: ./backend
         run: bun install
 
       - name: Install web dependencies
         working-directory: ./web
-        run: npm install
+        run: bun install
 
       - name: TypeScript check - Backend
         working-directory: ./backend
@@ -38,4 +33,4 @@ jobs:
 
       - name: TypeScript check - Web
         working-directory: ./web
-        run: npm run typecheck
+        run: bun run typecheck
