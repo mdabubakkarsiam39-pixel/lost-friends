@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {
       colors: {
