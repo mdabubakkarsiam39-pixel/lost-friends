@@ -6,7 +6,7 @@
   "main": "dist/app.js",
   "scripts": {
     "dev": "bun --watch src/app.ts",
-    "build": "tsc --noCheck",
+    "build": "./node_modules/.bin/tsc --noCheck",
     "start": "bun dist/app.js",
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc --noEmit",
@@ -48,7 +48,7 @@
     "@types/node": "^20.10.0",
     "@types/uuid": "^9.0.7",
     "eslint": "^8.56.0",
-    "typescript": "^5.4.0",
+    "typescript": "5.4.5",
     "web-push": "^3.6.0"
   }
 }
